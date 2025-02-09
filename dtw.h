@@ -1,4 +1,3 @@
-#include "sha-256.h"
 
 typedef struct DtwStringArray {
     int size;
@@ -67,8 +66,3 @@ struct DtwStringArray * dtw_list_basic(const char *path,int expected_type,bool c
 void dtw_create_dir_recursively(const char *path);
 
 
-char * calc_sha_256_returning_string(const void *input, size_t len);
-
-void calc_sha_256_from_string(uint8_t hash[SIZE_OF_SHA_256_HASH], const char *input);
-
-int calc_sha_256_from_file(uint8_t hash[SIZE_OF_SHA_256_HASH], const char *filename);

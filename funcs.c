@@ -1,7 +1,7 @@
 
 #include "funcs.h"
-
-int get_str_len(const char *str){
+//get thhe string length 
+int gsl(const char *str){
     int i = 0;
     while (str[i] != '\0'){
         i++;

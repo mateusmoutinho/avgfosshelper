@@ -7,7 +7,9 @@
 #include <stdio.h>
 #include "dtw.h"
 #include "funcs.h"
-#define  CACHE_FOLDER ".cache"
+#include "sha-256.h"
+//cache folder
+#define  CF ".cache" 
 int main(int argc, char *argv[]){
     
 
@@ -17,14 +19,20 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    char *repo_to_clone = argv[1];
+    //repo to clone
+    char *rpc = argv[1];
     //check if the repo name is too long
-    if(get_str_len(repo_to_clone) > 900){
+    if(gsl(rpc) > 900){
         printf("The repo name is too long\n");
         return 1;
     }
-
-    char command[1000];
-    sprintf(command,"git clone %s %s");
+    //repo sha
+    void rsv[32] = {0};
+    calc_sha_256(rs,rpc,gsl(rpc));
+    printf("%s\n",rs);
+    return 0;
+    //comand 
+    char c[1000]; 
+    sprintf(c,"cd %s/%s &&  git clone %s",CF);
     return 0;
 }
