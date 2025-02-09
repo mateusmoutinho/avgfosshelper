@@ -129,7 +129,10 @@ int main(int argc, char *argv[]){
             sprintf(ast + i * 2, "%02x", ahs[i]);
         }
         dtw_write_string_file_content(csp,ast);
-        
+        //time of last update
+        char ts[20] = {0};
+        sprintf("%ld",time(NULL));
+        dtw_write_string_file_content(lmp,ts);
     }
     
 
