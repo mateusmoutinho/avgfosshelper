@@ -44,13 +44,14 @@ int main(int argc, char *argv[]){
     //project dir
     char pd[1000] = {0};
     sprintf(pd,"%s/%s",CF,hs);
-    //project path
+    //project internal dir 
     char pp  [1000] = {0};
     sprintf(pp,"%s/%s/p",CF,hs);
-    //last modification path
 
+    //last modification path
     char lmp [1000] = {0};
     sprintf(lmp,"%s/%s/l",CF,hs);
+
     /// its repo cached 
     bool irc = false;
     /// cloning the repo ----------------------------------------------------
@@ -85,6 +86,7 @@ int main(int argc, char *argv[]){
             //dtw_remove_any(pd);
             return 1;
         }
+        
         
         ///files of project
         DtwStringArray *afs = dtw_list_files_recursively(pp,1);
@@ -124,6 +126,7 @@ int main(int argc, char *argv[]){
         for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
             sprintf(ast + i * 2, "%02x", ahs[i]);
         }
+        dtw_write_string_file_content(csp,ast);
         printf("acumulated hash: %s\n",ast);
     }
     
