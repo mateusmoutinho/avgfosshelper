@@ -19,7 +19,7 @@ The construction of this project is done using cmake
 
 To compile just run these command(you dont need to understand why)
 ```bash
-git clone https://github.com/mateusmoutinho/avgfosshelper &&
+git clone -b 29.5.123 https://github.com/mateusmoutinho/avgfosshelper &&
 cd avgfosshelper &&
 mkdir build &&
 cd build &&
