@@ -1,9 +1,20 @@
 
+#define DTW_FILE_TYPE 1
+#define DTW_FOLDER_TYPE 2
+#define DTW_ALL_TYPE 3
+#define DTW_NOT_FOUND -1
+
 typedef struct DtwStringArray {
     int size;
     char **strings;
 }DtwStringArray;
 
+#ifdef __linux__
+#define dtw_create_dir(path) mkdir(path,0777)
+#elif _WIN32
+#define dtw_create_dir(path) _mkdir(path)
+
+#endif
 
 // End the structure with a semicolon
 int  DtwStringArray_find_position( DtwStringArray *self, const char *string);
@@ -66,3 +77,4 @@ struct DtwStringArray * dtw_list_basic(const char *path,int expected_type,bool c
 void dtw_create_dir_recursively(const char *path);
 
 
+int dtw_entity_type(const char *path);

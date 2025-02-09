@@ -2,8 +2,10 @@
 #define true 1
 #define false 0
 #define bool int
-#include <dirent.h>
 
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/stat.h>
 #include <stdio.h>
 #include "dtw.h"
 #include "funcs.h"
@@ -44,6 +46,34 @@ int main(int argc, char *argv[]){
 
     char lmp [1000] = {0};
     sprintf("%s/%s/l\n",CF,hs);
+    /// its repo cached 
+    bool irc = false;
+    /// cloning the repo ----------------------------------------------------
+    //check if check sum path its a file 
+    if(dtw_entity_type(csp) == 1){
+        if(dtw_entity_type(lmp) == 1){
+
+            if(dtw_entity_type(pp) == 2){
+                irc = true;
+                // implemetar um check sum
+            }
+            else{
+                printf("intergrity check failed\n");
+                return 1;
+            }
+        }else{
+            printf("intergrity check failed\n");
+            return 1;
+        }
+    }
+
+
+    if(!irc){
+        char cmd[1000] = {0};
+        dtw_create_dir_recursively(pp);
+        //sprintf(cmd,"cd %s &&git clone %s",pp,rpc);
+    }
+    
 
     return 0;
     //comand 
