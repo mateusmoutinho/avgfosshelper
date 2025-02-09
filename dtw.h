@@ -25,6 +25,7 @@ typedef struct DtwStringArray {
 #define dtw_create_dir(path) _mkdir(path)
 
 #endif
+unsigned char *dtw_load_any_content(const char * path,long *size,bool *is_binary);
 
 // End the structure with a semicolon
 int  DtwStringArray_find_position( DtwStringArray *self, const char *string);

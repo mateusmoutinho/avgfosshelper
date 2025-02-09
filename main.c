@@ -46,11 +46,11 @@ int main(int argc, char *argv[]){
     sprintf(pd,"%s/%s",CF,hs);
     //project path
     char pp  [1000] = {0};
-    sprintf(pp,"%s/%s/p\n",CF,hs);
+    sprintf(pp,"%s/%s/p",CF,hs);
     //last modification path
 
     char lmp [1000] = {0};
-    sprintf(lmp,"%s/%s/l\n",CF,hs);
+    sprintf(lmp,"%s/%s/l",CF,hs);
     /// its repo cached 
     bool irc = false;
     /// cloning the repo ----------------------------------------------------
@@ -81,8 +81,36 @@ int main(int argc, char *argv[]){
         int error =  system(cmd);  
         if(error != 0){
             printf("Error cloning the repo\n");
-            dtw_remove_any(pd);
+            //dtw_remove_any(pd);
             return 1;
+        }
+        ///files of project
+        DtwStringArray *all_files = dtw_list_files_recursively(pp,1);
+        ///acumulted hash
+        uint8_t acumulated_hash[32] = {0};
+        //acumulated hash setted
+        bool acumulated_hash_setted= false;
+
+        for(int i = 0; i < all_files->size;i++){
+            //current file
+            char *current_file = all_files->strings[i];
+            printf("%s\n",current_file);
+            long size;
+            bool is_binary;
+            unsigned char *content = dtw_load_any_content(current_file,&size,&is_binary);
+            if(!acumulated_hash ){
+                acumulated_hash_setted = true;
+                calc_sha_256(acumulated_hash,content,size);
+            }else{
+                uint8_t current_hash[32] = {0};
+                calc_sha_256(current_hash,content,size);
+                char join_hash[65] = {0};
+                strcat(join_hash,acumulated_hash);
+                strcat(join_hash,current_hash);
+                printf("%s\n",join_hash);
+                calc_sha_256(acumulated_hash,join_hash,64);
+            }
+
         }
     }
     
