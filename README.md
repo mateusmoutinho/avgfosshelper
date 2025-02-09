@@ -6,6 +6,8 @@ The construction of this project is done using cmake.
 
 To compile you need to go into the build folder and run the following command:
 ```bash
+mkdir build
+
 cd build
 
 cmake ..
