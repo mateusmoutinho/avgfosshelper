@@ -289,7 +289,17 @@ int main(int argc, char *argv[]){
         {.c=".c",.m=100},
         {.c="src",.m=100},
         {.c="source",.m=100},
-    }
+    };
+
+
+    //chance struct
+    struct cs{
+        int index;
+        int end;
+    }cs;
+    
+    //chance list
+    struct cs *cl malloc(sizeof(struct cs) * afs->size +1);
 
 
     return 0;
