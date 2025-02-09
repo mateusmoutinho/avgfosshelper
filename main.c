@@ -208,16 +208,18 @@ int main(int argc, char *argv[]){
     char *lus = dtw_load_string_file_content(lmp);
     //last update
     long lu = atol(lus);
-    printf("last update %ld\n",lu);
     //now
     long n = time(NULL);
-    printf("now %ld\n",n);
-    printf("timeout %ld\n",timeout);
+  
     if(n - lu > timeout){
 
+        //dirs of pp , the git its the first 
+        DtwStringArray *ds = dtw_list_dirs(pp,1);
+    
         //comand line pull
         char cmdp[1000] = {0};
-        sprintf(cmdp,"cd %s && git pull",pp);
+        sprintf(cmdp,"cd %s && git pull",ds->strings[0]);
+
         int error =  system(cmdp);
         if(error != 0){
             printf("Error pulling the repo\n");

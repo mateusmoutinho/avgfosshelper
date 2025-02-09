@@ -1,6 +1,20 @@
 #include "dtw.h"
 
 
+
+
+ DtwStringArray * dtw_list_files(const char *path, bool concat_path){
+    return dtw_list_basic(path,  DTW_FILE_TYPE, concat_path);
+}
+
+ DtwStringArray * dtw_list_dirs(const char *path, bool concat_path){
+    return dtw_list_basic(path,DTW_FOLDER_TYPE, concat_path);
+}
+
+ DtwStringArray *  dtw_list_all(const char *path,  bool concat_path){
+    return dtw_list_basic(path, DTW_ALL_TYPE, concat_path);
+}
+
 bool dtw_write_any_content(const char *path,unsigned  char *content,long size){
     //Iterate through the path and create directories if they don't exist
     int entity_type =dtw_entity_type(path);
