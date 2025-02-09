@@ -295,7 +295,6 @@ int main(int argc, char *argv[]){
             }
         }
     }
-    printf("tamanho ffs %d\n",ffs->size);
     ////tendencie struct
    
 
