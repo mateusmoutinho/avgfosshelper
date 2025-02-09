@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
         }
     }
     //line limit
-    long ll = 250;
+    long ll = 40;
     for(int i =1; i < argc-1;i++){
         if(strcmp(argv[i],"--line-limit") == 0){
             ll = atol(argv[i+1]);
@@ -311,13 +311,25 @@ int main(int argc, char *argv[]){
     char *lf = dtw_load_string_file_content(ffs->strings[r]);
     system("clear");
     printf("====================MAKE YOUR HOLLY CODE REVIEW====================\n");
-    printf("File: %s\n",ffs->strings[r]);
+    printf("File: %s\n",ffs->strings[r]+ strlen(pp) + 1);
     printf("====================================================================\n");
     int lfs = strlen(lf);
     int tl = 0;
 
-    
-    for(int i =0; i < lfs;i++){
+    int i = 0;
+    if(ll < lfs){
+        while (true){
+            i  = rand() % lfs;
+            if (lfs - i > ll){
+                break;
+            }
+        }        
+    }
+    else{
+        i = 0;
+    }
+
+    for(; i < lfs;i++){
         printf("%c",lf[i]);
         if(lf[i] == '\n'){
             tl++;
