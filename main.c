@@ -41,7 +41,9 @@ int main(int argc, char *argv[]){
     char csp[1000] = {0};
     sprintf(csp,"%s/%s/c\n",CF, hs);
 
-
+    //project dir
+    char pd[1000] = {0};
+    sprintf(pd,"%s/%s",CF,hs);
     //project path
     char pp  [1000] = {0};
     sprintf(pp,"%s/%s/p\n",CF,hs);
@@ -73,9 +75,15 @@ int main(int argc, char *argv[]){
 
 
     if(!irc){
-        char cmd[1000] = {0};
         dtw_create_dir_recursively(pp);
-        //sprintf(cmd,"cd %s &&git clone %s",pp,rpc);
+        char cmd[1000] = {0};
+        sprintf(cmd,"cd %s && git clone %s",pp,rpc);
+        int error =  system(cmd);  
+        if(error != 0){
+            printf("Error cloning the repo\n");
+            dtw_remove_any(pd);
+            return 1;
+        }
     }
     
 

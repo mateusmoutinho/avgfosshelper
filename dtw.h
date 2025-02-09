@@ -4,11 +4,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #define DTW_FILE_TYPE 1
 #define DTW_FOLDER_TYPE 2
 #define DTW_ALL_TYPE 3
 #define DTW_NOT_FOUND -1
+#define DTW_CONCAT_PATH true
+#define DTW_NOT_CONCAT_PATH false
+#define WIN32_FILETYPE 32
 
 typedef struct DtwStringArray {
     int size;
@@ -84,3 +88,7 @@ void dtw_create_dir_recursively(const char *path);
 
 
 int dtw_entity_type(const char *path);
+
+bool dtw_remove_any(const char* path);
+
+double private_dtw_convert_string_to_number(const char *num, bool *its_a_number);

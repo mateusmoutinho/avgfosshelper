@@ -1,5 +1,5 @@
 #include "DoTheWorld/src/one.c"
 
 int main(){
-    dtw_create_dir
+    private_dtw_replace_string_once
 }
