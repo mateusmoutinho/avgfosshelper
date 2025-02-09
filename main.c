@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
     for(int i =1; i < argc;i++){
         if(strcmp(argv[i],"--help") == 0){
             printf("Code review tool\n");
-            printf("version:29.5.124\n");
+            printf("version:29.5.125\n");
             printf("License: AGPL\n");
             printf("Usage: %s <repo_to_clone> [--cache <cache_folder>] [--timeout <timeout_in_seconds>] [--line-chunk <line_chunk>]\n",argv[0]);
             printf("Options:\n");
@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
             return 0;
         }
         if(strcmp(argv[i],"--version") == 0){
-            printf("29.5.124\n");
+            printf("29.5.125\n");
             return 0;
         }
     }
