@@ -19,3 +19,7 @@ make
 - low quantity of files 
 - minimum of 200 lines por file
 - When reading a file you can read a maximum of 2500 lines per file. Why wouldn't you read more than that?
+- All functions have a short name with abbreviations, just like you would.
+- This project does not work for cpp, because it only needs to work for me.
+- Underneath there is a mathematical calculation to predict which file you would be most likely to choose.
+
