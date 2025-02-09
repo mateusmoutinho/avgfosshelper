@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/main.out.dir/link.d CMakeFiles/main.out.dir/main.c.o CMakeFiles/dtw_object.dir/dtw.c.o "CMakeFiles/sha256_object.dir/sha-256.c.o" -o main.out
