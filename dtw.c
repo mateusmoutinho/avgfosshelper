@@ -38,6 +38,20 @@ bool dtw_write_any_content(const char *path,unsigned  char *content,long size){
     return true;
 }
 
+char *dtw_load_string_file_content(const char * path){
+    long size;
+    bool is_binary;
+    unsigned char *element = dtw_load_any_content(path,&size,&is_binary);
+    if(element == NULL){
+        return NULL;
+    }
+
+    if(is_binary){
+        free(element);
+        return NULL;
+    }
+    return (char*)element;
+}
 
 bool dtw_write_string_file_content(const char *path,const char *content){
     long size;

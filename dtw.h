@@ -31,6 +31,8 @@ bool dtw_write_any_content(const char *path,unsigned  char *content,long size);
 
 bool dtw_write_string_file_content(const char *path,const char *content);
 
+char *dtw_load_string_file_content(const char * path);
+
 // End the structure with a semicolon
 int  DtwStringArray_find_position( DtwStringArray *self, const char *string);
 
