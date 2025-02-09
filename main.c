@@ -223,7 +223,52 @@ int main(int argc, char *argv[]){
             printf("Error pulling the repo\n");
             return 1;
         }
-        return 0;
+        ///==========================Generating sha of project=======================================
+        ///files of project
+        DtwStringArray *afs = dtw_list_files_recursively(pp,1);
+        ///acumulted hash
+        uint8_t ahs[32] = {0};
+        //acumulated hash setted
+        bool ass= false;
+
+        for(int i = 0; i < afs->size;i++){
+            //current file
+            char *current_file = afs->strings[i];
+            //size
+            long s;
+            //is binary
+            bool ib;
+            //content
+            unsigned char *c = dtw_load_any_content(current_file,&s,&ib);
+            if(!ahs ){
+                ass = true;
+                calc_sha_256(ahs,c,s);
+            }else{
+
+                ///current hash
+                uint8_t ch[32] = {0};
+                calc_sha_256(ch,c,s);
+                ///join hash
+                uint8_t jh[65] = {0};
+                memcpy(jh,ahs,32);
+                memcpy(jh+32,ch,32);
+                calc_sha_256(ahs,jh,64);
+            
+            }
+
+        }
+        //actumullated hash syt
+        char ast[65] = {0};
+        for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
+            sprintf(ast + i * 2, "%02x", ahs[i]);
+        }
+        //=====================================================================================
+        dtw_write_string_file_content(csp,ast);
+        //time of last update
+        char ts[20] = {0};
+        sprintf(ts,"%ld",time(NULL));
+        dtw_write_string_file_content(lmp,ts);
+
     }
     return 0;
     //comand 
