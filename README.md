@@ -25,6 +25,14 @@ cmake ..
 
 make
 ```
+## ClI flags
+## Flags
+| Flag | Description | Default |
+|------|-------------|---------|
+| ---cache | The Cache dir |  /tmp/cache |
+| --timeout | The timeout to reupdate the url | 300s |
+| --line-chunk | The size of the chunk of the random text |40 lines|
+
 
 ## Features
 - 4 max chars variables size 

@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
         }
     }
     if(!cfs){
-        sprintf(cf,".cache");
+        sprintf(cf,"/tmp/.cache");
     }
 
 
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
     //line limit
     long ll = 40;
     for(int i =1; i < argc-1;i++){
-        if(strcmp(argv[i],"--line-limit") == 0){
+        if(strcmp(argv[i],"--line-chunk") == 0){
             ll = atol(argv[i+1]);
         }
     }
