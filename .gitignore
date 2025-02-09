@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 DoTheWrld
+.cache
 # Object files
 *.o
 *.ko

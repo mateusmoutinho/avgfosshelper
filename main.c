@@ -29,13 +29,22 @@ int main(int argc, char *argv[]){
     //repo sha
     uint8_t rsv[32] = {0};
     calc_sha_256(rsv,rpc,gsl(rpc));
-    char hash_string[60] ={0}; 
+    ///hash of the repo url
+    char hs[60] ={0}; 
     for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
-        sprintf(hash_string + i * 2, "%02x", rsv[i]);
+        sprintf(hs + i * 2, "%02x", rsv[i]);
     }
+    //check sum path
+    char csp[1000] = {0};
+    sprintf("%s/%s/c\n",CF,hs);
+    //project path
+    char pp  [1000] = {0};
+    sprintf("%s/%s/p\n",CF,hs);
+    //last modification path
 
-    char check_sum[1000] = {0};
-    printf("%s\n",hash_string);
+    char lmp [1000] = {0};
+    sprintf("%s/%s/l\n",CF,hs);
+
     return 0;
     //comand 
     
