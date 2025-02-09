@@ -123,6 +123,7 @@ int main(int argc, char *argv[]){
                     }
 
                 }
+                DtwStringArray_free(afs);
                 //actumullated hash syt
                 char ast[65] = {0};
                 for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
@@ -131,10 +132,12 @@ int main(int argc, char *argv[]){
                 //old hash
                 char *olh = dtw_load_string_file_content(csp);
                 if(strcmp(ast,olh) != 0){                  
+                    free(olh);
                     printf("intergrity check failed dont modifiy the cache dir\n");
                     return 1;
                 }
 
+                    free(olh);
 
                 //=====================================================================================
             }
@@ -194,6 +197,8 @@ int main(int argc, char *argv[]){
             }
 
         }
+        DtwStringArray_free(afs);
+
         //actumullated hash syt
         char ast[65] = {0};
         for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
@@ -212,6 +217,7 @@ int main(int argc, char *argv[]){
     char *lus = dtw_load_string_file_content(lmp);
     //last update
     long lu = atol(lus);
+    free(lus);
     //now
     long n = time(NULL);
     DtwStringArray *ds = dtw_list_dirs(pp,1);
@@ -262,7 +268,7 @@ int main(int argc, char *argv[]){
             }
 
         }
-
+        DtwStringArray_free(afs);
 
         //actumullated hash syt
         char ast[65] = {0};
@@ -285,6 +291,7 @@ int main(int argc, char *argv[]){
     // filter only emenets that does not belong to .git
     char isgit[1000] = {0};
     sprintf(isgit,"%s.git/",ds->strings[0]);
+    DtwStringArray_free(ds);
     int isgits = strlen(isgit);
     for(int i = 0; i < afs->size;i++){
         //heck if afs->strings[i] is inside isgit
@@ -302,7 +309,8 @@ int main(int argc, char *argv[]){
         }
     }
     ////tendencie struct
-   
+    DtwStringArray_free(afs);
+
 
     //darw a element betwein 0 and afs->size
      srand( time(NULL) +43434299);
@@ -338,6 +346,8 @@ int main(int argc, char *argv[]){
            break;
         }
     }
+    free(lf);
+    DtwStringArray_free(ffs);
 
     return 0;
     //comand 3
