@@ -17,7 +17,7 @@ It will place a random file with a random chunk of code from that file on your s
 The construction of this project is done using cmake 
 ( because its the only thing I'm shure you hve installed).
 
-To compile you need to go into the build folder and run the following command:
+To compile just run these command(you dont need to understand why)
 ```bash
 git clone https://github.com/mateusmoutinho/avgfosshelper &&
 cd avgfosshelper &&
