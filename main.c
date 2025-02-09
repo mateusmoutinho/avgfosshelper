@@ -275,6 +275,23 @@ int main(int argc, char *argv[]){
         dtw_write_string_file_content(lmp,ts);
 
     }
+    
+    DtwStringArray *afs = dtw_list_files_recursively(pp,1);
+    ////tendencie struct
+    struct ts{
+        const char *c; //contains
+        int m; //multiplier
+    }ts;
+    ///tehndencie list
+    struct ts tl[] ={
+        {.c="main",.m=1000},
+        {.c="sample",.m=30},
+        {.c=".c",.m=100},
+        {.c="src",.m=100},
+        {.c="source",.m=100},
+    }
+
+
     return 0;
     //comand 3
     
