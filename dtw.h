@@ -1,4 +1,4 @@
-#include "sha256.h"
+#include "sha-256.h"
 
 typedef struct DtwStringArray {
     int size;
