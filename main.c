@@ -11,7 +11,9 @@
 #include "funcs.h"
 #include "sha-256.h"
 //cache folder
-#define  CF ".cache" 
+#define  CF ".cache"
+//timeout
+#define TM 1000 
 int main(int argc, char *argv[]){
     
 
@@ -87,7 +89,7 @@ int main(int argc, char *argv[]){
             return 1;
         }
         
-        
+        ///==========================Generating sha of project=======================================
         ///files of project
         DtwStringArray *afs = dtw_list_files_recursively(pp,1);
         ///acumulted hash
@@ -127,7 +129,7 @@ int main(int argc, char *argv[]){
             sprintf(ast + i * 2, "%02x", ahs[i]);
         }
         dtw_write_string_file_content(csp,ast);
-        printf("acumulated hash: %s\n",ast);
+        
     }
     
 

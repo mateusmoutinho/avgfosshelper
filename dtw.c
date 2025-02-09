@@ -1,5 +1,55 @@
 #include "dtw.h"
 
+
+bool dtw_write_any_content(const char *path,unsigned  char *content,long size){
+    //Iterate through the path and create directories if they don't exist
+    int entity_type =dtw_entity_type(path);
+    if(entity_type == DTW_FOLDER_TYPE){
+        dtw_remove_any(path);
+    }
+
+
+    if(entity_type == DTW_NOT_FOUND){
+        long path_size = (long)strlen(path);
+        for(long i = path_size-1;i > 0;i--){
+            //runs in negative mode til / or \ is found
+            if(path[i] == '\\' || path[i] == '/'){
+                char *dir_path =(char*)malloc(i +2);
+                dir_path[i] = '\0';
+                strncpy(dir_path,path,i);
+
+                dtw_create_dir_recursively(dir_path);
+                free(dir_path);
+
+                break;
+            }
+        }
+    }
+
+    FILE *file = fopen(path,"wb");
+    if(file == NULL){
+
+        return false;
+    }
+
+    fwrite(content, sizeof(char),size, file);
+
+    fclose(file);
+    return true;
+}
+
+
+bool dtw_write_string_file_content(const char *path,const char *content){
+    long size;
+    if(content == NULL){
+        size = 0;
+    }
+    else{
+        size = (long)strlen(content);
+    }
+    return dtw_write_any_content(path,(unsigned char*)content,size);
+}
+
 unsigned char *dtw_load_any_content(const char * path,long *size,bool *is_binary){
 
     *is_binary = false;
