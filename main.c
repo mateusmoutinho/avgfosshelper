@@ -165,11 +165,11 @@ int main(int argc, char *argv[]){
 
         for(int i = 0; i < afs->size;i++){
             //current file
-            char *current_file = afs->strings[i];
+            char *cf = afs->strings[i];
             
             //content
             uint8_t lmfs[20] = {0};
-            long lmf = dtw_get_entity_last_motification_in_unix(current_file);
+            long lmf = dtw_get_entity_last_motification_in_unix(cf);
             sprintf(lmfs,"%ld",lmf);
             if(!ahs ){
                 ass = true;
@@ -233,11 +233,11 @@ int main(int argc, char *argv[]){
 
         for(int i = 0; i < afs->size;i++){
             //current file
-            char *current_file = afs->strings[i];
+            char *cf = afs->strings[i];
             
             //content
             uint8_t lmfs[20] = {0};
-            long lmf = dtw_get_entity_last_motification_in_unix(current_file);
+            long lmf = dtw_get_entity_last_motification_in_unix(cf);
             sprintf(lmfs,"%ld",lmf);
             if(!ahs ){
                 ass = true;
