@@ -204,13 +204,13 @@ int main(int argc, char *argv[]){
     }
     
     //===============================pull check========================================
-    //timeout
-    char *tm = dtw_load_string_file_content(lmp);
-    //converted timeout
-    long ctm = atol(tm);
+    //lastt update string
+    char *lus = dtw_load_string_file_content(lmp);
+    //last update
+    long lu = atol(lus);
     //now
     long n = time(NULL);
-    if(n - ctm < n){
+    if(n - lu > timeout){
         //comand line pull
         char cmdp[1000] = {0};
         sprintf(cmdp,"cd %s && git pull",pp);
