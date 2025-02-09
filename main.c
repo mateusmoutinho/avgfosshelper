@@ -33,6 +33,8 @@ int main(int argc, char *argv[]){
     for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
         sprintf(hash_string + i * 2, "%02x", rsv[i]);
     }
+
+    char check_sum[1000] = {0};
     printf("%s\n",hash_string);
     return 0;
     //comand 
