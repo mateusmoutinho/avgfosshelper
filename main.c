@@ -36,20 +36,24 @@ int main(int argc, char *argv[]){
     for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
         sprintf(hs + i * 2, "%02x", rsv[i]);
     }
+
     //check sum path
     char csp[1000] = {0};
-    sprintf("%s/%s/c\n",CF,hs);
+    sprintf(csp,"%s/%s/c\n",CF, hs);
+
+
     //project path
     char pp  [1000] = {0};
-    sprintf("%s/%s/p\n",CF,hs);
+    sprintf(pp,"%s/%s/p\n",CF,hs);
     //last modification path
 
     char lmp [1000] = {0};
-    sprintf("%s/%s/l\n",CF,hs);
+    sprintf(lmp,"%s/%s/l\n",CF,hs);
     /// its repo cached 
     bool irc = false;
     /// cloning the repo ----------------------------------------------------
     //check if check sum path its a file 
+
     if(dtw_entity_type(csp) == 1){
         if(dtw_entity_type(lmp) == 1){
 
