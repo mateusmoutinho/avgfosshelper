@@ -27,12 +27,14 @@ int main(int argc, char *argv[]){
         return 1;
     }
     //repo sha
-    void rsv[32] = {0};
-    calc_sha_256(rs,rpc,gsl(rpc));
-    printf("%s\n",rs);
+    uint8_t rsv[32] = {0};
+    calc_sha_256(rsv,rpc,gsl(rpc));
+    char hash_string[60] ={0}; 
+    for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
+        sprintf(hash_string + i * 2, "%02x", rsv[i]);
+    }
+    printf("%s\n",hash_string);
     return 0;
     //comand 
-    char c[1000]; 
-    sprintf(c,"cd %s/%s &&  git clone %s",CF);
-    return 0;
+    
 }
