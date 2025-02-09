@@ -63,3 +63,5 @@ struct DtwStringArray * dtw_list_basic(const char *path,int expected_type,bool c
 
 
  DtwStringArray * dtw_list_all_recursively(const char *path,bool concat_path);
+
+void dtw_create_dir_recursively(const char *path);
