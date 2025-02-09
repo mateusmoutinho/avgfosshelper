@@ -13,7 +13,24 @@
 //timeout
 int main(int argc, char *argv[]){
     
-
+    for(int i =1; i < argc;i++){
+        if(strcmp(argv[i],"--help") == 0){
+            printf("Code review tool\n");
+            printf("version:29.5.123\n");
+            printf("License: AGPL\n");
+            printf("Usage: %s <repo_to_clone> [--cache <cache_folder>] [--timeout <timeout_in_seconds>] [--line-chunk <line_chunk>]\n",argv[0]);
+            printf("Options:\n");
+            printf("  --cache <cache_folder>  Set the cache folder\n");
+            printf("  --timeout <timeout_in_seconds>  Set the timeout in seconds\n");
+            printf("  --line-chunk <line_chunk>  Set the line chunk\n");
+            return 0;
+        }
+        if(strcmp(argv[i],"--version") == 0){
+            printf("29.5.123\n");
+            return 0;
+        }
+    }
+    
     //means the user did not provide the repo to clone
     if (argc < 2){
         printf("Usage: %s <repo_to_clone>\n",argv[0]);
@@ -30,6 +47,7 @@ int main(int argc, char *argv[]){
             cfs = true;
         }
     }
+    
     if(!cfs){
         sprintf(cf,"/tmp/.cache");
     }
