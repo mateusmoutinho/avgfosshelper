@@ -208,9 +208,13 @@ int main(int argc, char *argv[]){
     char *lus = dtw_load_string_file_content(lmp);
     //last update
     long lu = atol(lus);
+    printf("last update %ld\n",lu);
     //now
     long n = time(NULL);
+    printf("now %ld\n",n);
+    printf("timeout %ld\n",timeout);
     if(n - lu > timeout){
+
         //comand line pull
         char cmdp[1000] = {0};
         sprintf(cmdp,"cd %s && git pull",pp);
