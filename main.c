@@ -154,8 +154,8 @@ int main(int argc, char *argv[]){
 
     if(!irc){
         dtw_create_dir_recursively(pp);
-        char cmd[1000] = {0};
-        sprintf(cmd,"cd %s && git clone %s",pp,rpc);
+        char cmd[2000] = {0};
+        sprintf(cmd,"cd %s && git clone %s --quiet",pp,rpc);
         
         int error =  system(cmd);  
         if(error != 0){
@@ -228,7 +228,7 @@ int main(int argc, char *argv[]){
     
         //comand line pull
         char cmdp[1000] = {0};
-        sprintf(cmdp,"cd %s && git pull",ds->strings[0]);
+        sprintf(cmdp,"cd %s && git pull  --quiet",ds->strings[0]);
 
         int error =  system(cmdp);
         if(error != 0){
