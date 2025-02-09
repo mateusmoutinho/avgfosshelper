@@ -330,7 +330,10 @@ int main(int argc, char *argv[]){
 
     //darw a element betwein 0 and afs->size
     int r = rand() % cl[ffs->size-1].end;
-
+    //loaded file
+    char *lf = dtw_load_string_file_content(ffs->strings[cl[r].index]);
+    printf("====================MAKE YOUR HOLLY CODE REVIEW====================\n");
+    printf("%s\n",lf);
 
     return 0;
     //comand 3
