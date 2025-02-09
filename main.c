@@ -33,9 +33,15 @@ int main(int argc, char *argv[]){
     if(!cfs){
         sprintf(cf,".cache");
     }
-    
+
+
     //timeout in seconds
-    char tm[20] = {0};
+    long timeout  = 300;
+    for(int i =1; i < argc-1;i++){
+        if(strcmp(argv[i],"--timeout") == 0){
+            timeout = atol(argv[i+1]);
+        }
+    }
 
     //repo to clone
     char *rpc = argv[1];
@@ -55,18 +61,18 @@ int main(int argc, char *argv[]){
 
     //check sum path
     char csp[1000] = {0};
-    sprintf(csp,"%s/%s/c\n",CF, hs);
+    sprintf(csp,"%s/%s/c\n",cf, hs);
 
     //project dir
     char pd[1000] = {0};
-    sprintf(pd,"%s/%s",CF,hs);
+    sprintf(pd,"%s/%s",cf,hs);
     //project internal dir 
     char pp  [1000] = {0};
-    sprintf(pp,"%s/%s/p",CF,hs);
+    sprintf(pp,"%s/%s/p",cf,hs);
 
     //last modification path
     char lmp [1000] = {0};
-    sprintf(lmp,"%s/%s/l",CF,hs);
+    sprintf(lmp,"%s/%s/l",cf,hs);
     /// its repo cached 
     bool irc = false;
     /// cloning the repo ----------------------------------------------------
@@ -204,7 +210,7 @@ int main(int argc, char *argv[]){
     long ctm = atol(tm);
     //now
     long n = time(NULL);
-    if(n - ctm < TM){
+    if(n - ctm < n){
         //comand line pull
         char cmdp[1000] = {0};
         sprintf(cmdp,"cd %s && git pull",pp);
