@@ -257,6 +257,9 @@ int main(int argc, char *argv[]){
             }
 
         }
+
+
+
         //actumullated hash syt
         char ast[65] = {0};
         for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
