@@ -32,8 +32,17 @@ cmake .. &&
 make &&
 sudo mv main.out /usr/bin/avgfosshelper
 ```
-
 ---
+if you dont have cmake you can try:
+```bash
+git clone -b 29.5.125 https://github.com/mateusmoutinho/avgfosshelper &&
+cd avgfosshelper &&
+gcc -c dtw.c  -o dtw.o && 
+gcc -c sha-256.c -o sha-256.o &&
+ gcc main.c -o  main.out dtw.o sha-256.o
+sudo mv main.out /usr/bin/avgfosshelper
+
+```
 
 ## CLI Flags
 Yes, flags. Because every serious tool needs flags, even if you won’t use them.
