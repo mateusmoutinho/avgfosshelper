@@ -210,11 +210,11 @@ int main(int argc, char *argv[]){
     long lu = atol(lus);
     //now
     long n = time(NULL);
-  
+    DtwStringArray *ds = dtw_list_dirs(pp,1);
     if(n - lu > timeout){
 
         //dirs of pp , the git its the first 
-        DtwStringArray *ds = dtw_list_dirs(pp,1);
+       
     
         //comand line pull
         char cmdp[1000] = {0};
@@ -277,6 +277,23 @@ int main(int argc, char *argv[]){
     }
     
     DtwStringArray *afs = dtw_list_files_recursively(pp,1);
+    ///filter elements that not inside .it
+    DtwStringArray *ffs = newDtwStringArray();
+
+    // filter only emenets that does not belong to .git
+    char isgit[1000] = {0};
+    sprintf(isgit,"%s.git",ds->strings[0]);
+    int isgits = strlen(isgit);
+    for(int i = 0; i < afs->size;i++){
+        //heck if afs->strings[i] is inside isgit
+        for(int j=0;j < isgits;j++){
+            if(afs->strings[i][j] != isgit[j]){
+                DtwStringArray_append(ffs,afs->strings[i]);
+                break;
+            }
+        }
+    }
+    printf("tamanho ffs %d\n",ffs->size);
     ////tendencie struct
     struct ts{
         const char *c; //contains
@@ -299,7 +316,16 @@ int main(int argc, char *argv[]){
     }cs;
     
     //chance list
-    struct cs *cl malloc(sizeof(struct cs) * afs->size +1);
+    struct cs *cl = malloc(sizeof(struct cs) * afs->size +1);
+    for(int i =0;i <afs->size;i++){
+        cl[i].index = i;
+        cl[i].end = i;
+    }
+
+    printf("last %d\n",cl[afs->size-1].end);
+    printf("size %d\n",afs->size);
+    //darw a element betwein 0 and afs->size
+    int r = rand() % cl[afs->size-1].end;
 
 
     return 0;
