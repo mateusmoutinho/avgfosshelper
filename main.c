@@ -297,38 +297,13 @@ int main(int argc, char *argv[]){
     }
     printf("tamanho ffs %d\n",ffs->size);
     ////tendencie struct
-    struct ts{
-        const char *c; //contains
-        int m; //multiplier
-    }ts;
-    ///tehndencie list
-    struct ts tl[] ={
-        {.c="main",.m=1000},
-        {.c="sample",.m=30},
-        {.c=".c",.m=100},
-        {.c="src",.m=100},
-        {.c="source",.m=100},
-    };
-
-
-    //chance struct
-    struct cs{
-        int index;
-        int end;
-    }cs;
-    
-    //chance list
-    struct cs *cl = malloc(sizeof(struct cs) * ffs->size +1);
-    for(int i =0;i <ffs->size;i++){
-        cl[i].index = i;
-        cl[i].end = i;
-    }
+   
 
     //darw a element betwein 0 and afs->size
      srand( time(NULL) +43434299);
-    int r = rand() % cl[ffs->size-1].end;
+    int r = rand() % ffs->size;
     //loaded file
-    char *lf = dtw_load_string_file_content(ffs->strings[cl[r].index]);
+    char *lf = dtw_load_string_file_content(ffs->strings[r]);
     system("clear");
     printf("====================MAKE YOUR HOLLY CODE REVIEW====================\n");
     printf("%s\n",lf);
