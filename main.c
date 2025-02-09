@@ -10,9 +10,7 @@
 #include "dtw.h"
 #include "sha-256.h"
 //cache folder
-#define  CF ".cache"
 //timeout
-#define TM 1000 
 int main(int argc, char *argv[]){
     
 
@@ -21,6 +19,23 @@ int main(int argc, char *argv[]){
         printf("Usage: %s <repo_to_clone>\n",argv[0]);
         return 1;
     }
+    //cache folder
+    char cf[1000] = {0};
+    //cache folder setted
+    bool cfs = false;
+    //check if the user provided the cache folder
+    for(int i =1; i < argc-1;i++){
+        if(strcmp(argv[i],"--cache") == 0){
+            strcpy(cf,argv[i+1]);
+            cfs = true;
+        }
+    }
+    if(!cfs){
+        sprintf(cf,".cache");
+    }
+    
+    //timeout in seconds
+    char tm[20] = {0};
 
     //repo to clone
     char *rpc = argv[1];
