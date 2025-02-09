@@ -18,3 +18,4 @@ make
 - comments for every action (expecialy the for the obvious)
 - low quantity of files 
 - minimum of 200 lines por file
+- When reading a file you can read a maximum of 2500 lines per file. Why wouldn't you read more than that?
