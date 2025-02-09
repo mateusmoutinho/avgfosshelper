@@ -78,40 +78,53 @@ int main(int argc, char *argv[]){
         dtw_create_dir_recursively(pp);
         char cmd[1000] = {0};
         sprintf(cmd,"cd %s && git clone %s",pp,rpc);
+        
         int error =  system(cmd);  
         if(error != 0){
             printf("Error cloning the repo\n");
             //dtw_remove_any(pd);
             return 1;
         }
+        
         ///files of project
-        DtwStringArray *all_files = dtw_list_files_recursively(pp,1);
+        DtwStringArray *afs = dtw_list_files_recursively(pp,1);
         ///acumulted hash
-        uint8_t acumulated_hash[32] = {0};
+        uint8_t ahs[32] = {0};
         //acumulated hash setted
-        bool acumulated_hash_setted= false;
+        bool ass= false;
 
-        for(int i = 0; i < all_files->size;i++){
+        for(int i = 0; i < afs->size;i++){
             //current file
-            char *current_file = all_files->strings[i];
-            printf("%s\n",current_file);
-            long size;
-            bool is_binary;
-            unsigned char *content = dtw_load_any_content(current_file,&size,&is_binary);
-            if(!acumulated_hash ){
-                acumulated_hash_setted = true;
-                calc_sha_256(acumulated_hash,content,size);
+            char *current_file = afs->strings[i];
+            //size
+            long s;
+            //is binary
+            bool ib;
+            //content
+            unsigned char *c = dtw_load_any_content(current_file,&s,&ib);
+            if(!ahs ){
+                ass = true;
+                calc_sha_256(ahs,c,s);
             }else{
-                uint8_t current_hash[32] = {0};
-                calc_sha_256(current_hash,content,size);
-                char join_hash[65] = {0};
-                strcat(join_hash,acumulated_hash);
-                strcat(join_hash,current_hash);
-                printf("%s\n",join_hash);
-                calc_sha_256(acumulated_hash,join_hash,64);
+
+                ///current hash
+                uint8_t ch[32] = {0};
+                calc_sha_256(ch,c,s);
+                ///join hash
+                uint8_t jh[65] = {0};
+                memcpy(jh,ahs,32);
+                memcpy(jh+32,ch,32);
+                calc_sha_256(ahs,jh,64);
+            
             }
 
         }
+        //actumullated hash syt
+        char ast[65] = {0};
+        for (unsigned int i = 0; i < SIZE_OF_SHA_256_HASH; i++) {
+            sprintf(ast + i * 2, "%02x", ahs[i]);
+        }
+        printf("acumulated hash: %s\n",ast);
     }
     
 
