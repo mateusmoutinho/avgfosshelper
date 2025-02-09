@@ -1,3 +1,9 @@
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 
 #define DTW_FILE_TYPE 1
 #define DTW_FOLDER_TYPE 2
