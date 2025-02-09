@@ -95,20 +95,19 @@ int main(int argc, char *argv[]){
                 for(int i = 0; i < afs->size;i++){
                     //current file
                     char *current_file = afs->strings[i];
-                    //size
-                    long s;
-                    //is binary
-                    bool ib;
+                   
                     //content
-                    unsigned char *c = dtw_load_any_content(current_file,&s,&ib);
+                    uint8_t lmfs[20] = {0};
+                    long lmf = dtw_get_entity_last_motification_in_unix(current_file);
+                    sprintf(lmfs,"%ld",lmf);
                     if(!ahs ){
                         ass = true;
-                        calc_sha_256(ahs,c,s);
+                        calc_sha_256(ahs,lmfs,strlen(lmfs));
                     }else{
 
                         ///current hash
                         uint8_t ch[32] = {0};
-                        calc_sha_256(ch,c,s);
+                        calc_sha_256(ch,lmfs,strlen(lmfs));
                         ///join hash
                         uint8_t jh[65] = {0};
                         memcpy(jh,ahs,32);
@@ -167,20 +166,19 @@ int main(int argc, char *argv[]){
         for(int i = 0; i < afs->size;i++){
             //current file
             char *current_file = afs->strings[i];
-            //size
-            long s;
-            //is binary
-            bool ib;
+            
             //content
-            unsigned char *c = dtw_load_any_content(current_file,&s,&ib);
+            uint8_t lmfs[20] = {0};
+            long lmf = dtw_get_entity_last_motification_in_unix(current_file);
+            sprintf(lmfs,"%ld",lmf);
             if(!ahs ){
                 ass = true;
-                calc_sha_256(ahs,c,s);
+                calc_sha_256(ahs,lmfs,strlen(lmfs));
             }else{
 
                 ///current hash
                 uint8_t ch[32] = {0};
-                calc_sha_256(ch,c,s);
+                calc_sha_256(ch,lmfs,strlen(lmfs));
                 ///join hash
                 uint8_t jh[65] = {0};
                 memcpy(jh,ahs,32);
@@ -236,20 +234,19 @@ int main(int argc, char *argv[]){
         for(int i = 0; i < afs->size;i++){
             //current file
             char *current_file = afs->strings[i];
-            //size
-            long s;
-            //is binary
-            bool ib;
+            
             //content
-            unsigned char *c = dtw_load_any_content(current_file,&s,&ib);
+            uint8_t lmfs[20] = {0};
+            long lmf = dtw_get_entity_last_motification_in_unix(current_file);
+            sprintf(lmfs,"%ld",lmf);
             if(!ahs ){
                 ass = true;
-                calc_sha_256(ahs,c,s);
+                calc_sha_256(ahs,lmfs,strlen(lmfs));
             }else{
 
                 ///current hash
                 uint8_t ch[32] = {0};
-                calc_sha_256(ch,c,s);
+                calc_sha_256(ch,lmfs,strlen(lmfs));
                 ///join hash
                 uint8_t jh[65] = {0};
                 memcpy(jh,ahs,32);
@@ -259,7 +256,6 @@ int main(int argc, char *argv[]){
             }
 
         }
-
 
 
         //actumullated hash syt

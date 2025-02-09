@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 #include <unistd.h>
 
 #define DTW_FILE_TYPE 1
@@ -99,3 +100,5 @@ int dtw_entity_type(const char *path);
 bool dtw_remove_any(const char* path);
 
 double private_dtw_convert_string_to_number(const char *num, bool *its_a_number);
+
+long int dtw_get_entity_last_motification_in_unix(const char *path);

@@ -2,5 +2,5 @@
 
 int main(){
 
-   DtwRandonizer *dr = newDtwRandonizer();   
+   dtw_get_entity_last_motification_in_unix
 }

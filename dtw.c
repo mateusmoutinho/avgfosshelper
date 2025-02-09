@@ -837,3 +837,14 @@ struct DtwStringArray *  dtw_list_basic(const char *path,int expected_type,bool 
     }
     return all;
 }
+
+long int dtw_get_entity_last_motification_in_unix(const char *path){
+    struct stat attr;
+    if(stat(path, &attr) != 0) {
+        return -1;
+    }
+
+    time_t last_modification_in_unix = attr.st_mtime;
+
+    return last_modification_in_unix;
+}
