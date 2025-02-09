@@ -282,13 +282,19 @@ int main(int argc, char *argv[]){
 
     // filter only emenets that does not belong to .git
     char isgit[1000] = {0};
-    sprintf(isgit,"%s.git",ds->strings[0]);
+    sprintf(isgit,"%s.git/",ds->strings[0]);
     int isgits = strlen(isgit);
     for(int i = 0; i < afs->size;i++){
         //heck if afs->strings[i] is inside isgit
         for(int j=0;j < isgits;j++){
             if(afs->strings[i][j] != isgit[j]){
-                DtwStringArray_append(ffs,afs->strings[i]);
+                long s;
+                bool ib;
+                unsigned char *c = dtw_load_any_content(afs->strings[i],&s,&ib);
+                if(!ib){
+                    DtwStringArray_append(ffs,afs->strings[i]);
+                }
+                free(c);
                 break;
             }
         }
@@ -316,16 +322,14 @@ int main(int argc, char *argv[]){
     }cs;
     
     //chance list
-    struct cs *cl = malloc(sizeof(struct cs) * afs->size +1);
-    for(int i =0;i <afs->size;i++){
+    struct cs *cl = malloc(sizeof(struct cs) * ffs->size +1);
+    for(int i =0;i <ffs->size;i++){
         cl[i].index = i;
         cl[i].end = i;
     }
 
-    printf("last %d\n",cl[afs->size-1].end);
-    printf("size %d\n",afs->size);
     //darw a element betwein 0 and afs->size
-    int r = rand() % cl[afs->size-1].end;
+    int r = rand() % cl[ffs->size-1].end;
 
 
     return 0;
