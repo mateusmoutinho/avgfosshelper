@@ -329,9 +329,11 @@ int main(int argc, char *argv[]){
     }
 
     //darw a element betwein 0 and afs->size
+     srand( time(NULL) +43434299);
     int r = rand() % cl[ffs->size-1].end;
     //loaded file
     char *lf = dtw_load_string_file_content(ffs->strings[cl[r].index]);
+    system("clear");
     printf("====================MAKE YOUR HOLLY CODE REVIEW====================\n");
     printf("%s\n",lf);
 
