@@ -1,0 +1,5 @@
+/home/samuelhdmv/Documentos/avgfosshelper/build/CMakeFiles/dtw_object.dir
+/home/samuelhdmv/Documentos/avgfosshelper/build/CMakeFiles/sha256_object.dir
+/home/samuelhdmv/Documentos/avgfosshelper/build/CMakeFiles/main.out.dir
+/home/samuelhdmv/Documentos/avgfosshelper/build/CMakeFiles/edit_cache.dir
+/home/samuelhdmv/Documentos/avgfosshelper/build/CMakeFiles/rebuild_cache.dir
