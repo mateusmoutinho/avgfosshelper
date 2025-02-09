@@ -182,8 +182,24 @@ int main(int argc, char *argv[]){
         dtw_write_string_file_content(lmp,ts);
     }
     
-    //===============================spull check========================================
-
+    //===============================pull check========================================
+    //timeout
+    char *tm = dtw_load_string_file_content(lmp);
+    //converted timeout
+    long ctm = atol(tm);
+    //now
+    long n = time(NULL);
+    if(n - ctm < TM){
+        //comand line pull
+        char cmdp[1000] = {0};
+        sprintf(cmdp,"cd %s && git pull",pp);
+        int error =  system(cmdp);
+        if(error != 0){
+            printf("Error pulling the repo\n");
+            return 1;
+        }
+        return 0;
+    }
     return 0;
     //comand 
     
