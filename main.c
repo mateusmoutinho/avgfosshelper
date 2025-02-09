@@ -36,13 +36,19 @@ int main(int argc, char *argv[]){
 
 
     //timeout in seconds
-    long timeout  = 300;
+    long to  = 300;
     for(int i =1; i < argc-1;i++){
         if(strcmp(argv[i],"--timeout") == 0){
-            timeout = atol(argv[i+1]);
+            to = atol(argv[i+1]);
         }
     }
-
+    //line limit
+    long ll = 250;
+    for(int i =1; i < argc-1;i++){
+        if(strcmp(argv[i],"--line-limit") == 0){
+            ll = atol(argv[i+1]);
+        }
+    }
     //repo to clone
     char *rpc = argv[1];
     //check if the repo name is too long
@@ -209,7 +215,7 @@ int main(int argc, char *argv[]){
     //now
     long n = time(NULL);
     DtwStringArray *ds = dtw_list_dirs(pp,1);
-    if(n - lu > timeout){
+    if(n - lu > to){
 
         //dirs of pp , the git its the first 
        
@@ -305,7 +311,21 @@ int main(int argc, char *argv[]){
     char *lf = dtw_load_string_file_content(ffs->strings[r]);
     system("clear");
     printf("====================MAKE YOUR HOLLY CODE REVIEW====================\n");
-    printf("%s\n",lf);
+    printf("File: %s\n",ffs->strings[r]);
+    printf("====================================================================\n");
+    int lfs = strlen(lf);
+    int tl = 0;
+
+    
+    for(int i =0; i < lfs;i++){
+        printf("%c",lf[i]);
+        if(lf[i] == '\n'){
+            tl++;
+        }
+        if(tl > ll){
+           break;
+        }
+    }
 
     return 0;
     //comand 3
