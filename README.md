@@ -1,7 +1,7 @@
 A tool to help the incompetent free software enthusiast code review open source libraries.
 It works exactly like your workflow:
 ### FOSS Enthusiast Workflow:
-1: some indie developer posts a lib they spent weeks or months designing, on reddit/dayle.dev
+1: some indie developer posts a lib they spent weeks or months designing, on reddit/dayle.dev<br>
 2: the FOSS Enthusiast opens the lib's github in a random file, with 0 context, and 0 understanding of why each thing is there, then omits a bunch of nonsense opinions about the project.
 
 ## avgfosshelper workflow:
