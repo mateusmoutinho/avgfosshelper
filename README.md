@@ -37,6 +37,7 @@ sudo mv main.out /usr/bin/avgfosshelper
 
 
 ## Features
+- contains a typo on the name 
 - 4 max chars variables size 
 - comments for every action (expecialy the for the obvious)
 - low quantity of files 
